@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>超级马里奥复刻版</title>
+    <style>
+        @font-face {
+            font-family: 'Press Start 2P';
+            src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        }
+        
+        canvas {
+            border: 2px solid #000;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        body {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .game-header {
+            color: white;
+            font-family: 'Press Start 2P', monospace;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px #000;
+        }
+        
+        .game-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .game-time {
+            font-size: 16px;
+        }
+        
+        /* 胜利提示框样式 */
+        .win-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: linear-gradient(to bottom, #4a90e2, #357abd);
+            border: 3px solid #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        
+        .win-header {
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQIW2NkQAOMGAI/GBkY/oMEGP5DGYxwAUZGRrgKmAAAcxYI/fRYxXEAAAAASUVORK5CYII=') repeat;
+            padding: 10px;
+            margin: -20px -20px 15px -20px;
+            border-radius: 7px 7px 0 0;
+        }
+        
+        .win-title {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .win-content {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .win-time {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+        
+        .continue-btn {
+            background: linear-gradient(to bottom, #f0ad4e, #eb9316);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .continue-btn:hover {
+            background: linear-gradient(to bottom, #eb9316, #d58512);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    
+    <!-- 胜利提示框 -->
+    <div class="win-popup" id="winPopup">
+        <div class="win-header">
+            <h2 class="win-title">恭喜通关</h2>
+        </div>
+        <div class="win-content">
+            <div class="win-time">通关时间: <span id="clearTime">00:00:00</span></div>
+        </div>
+        <button class="continue-btn" onclick="restartGame()">继续游戏</button>
+    </div>
+
+    <script src="js/coin.js"></script>
+    <script src="js/platform.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html> 
